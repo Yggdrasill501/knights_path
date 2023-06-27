@@ -4,12 +4,6 @@ from abc import abstractclassmethod, abstractproperty, abstractstaticmethod, abs
 from collections import deque
 from functools import lru_cache
 from point import Point
-                
-
-class TowersPath:
-    """ """
-    def __init__(self) -> None:
-        pass                
 
 
 class KnightsPath:
@@ -53,27 +47,3 @@ class KnightsPath:
         @abstractmethod
         def run(self) -> None:
             """Method to run the class"""
-            self.find_path
-    
-
-class BishopsPath:
-    """ """
-    def __init__(self) -> None:
-        pass
-    
-
-class QueensPath:
-    """"""
-    def __init__(self) -> None:
-        pass
-    
-class KingsPath:
-    """"""
-    def __init__(self) -> None:
-        pass
-
-class PawnsPath:
-    """"""
-    def __init__(self) -> None:
-        pass
-    
