@@ -5,19 +5,16 @@ from collections import deque
 from functools import lru_cache
 from point import Point
                 
-
-class TowersPath:
-    """ """
+class Figure:
     def __init__(self) -> None:
-        pass                
+        self.dx : list
+        self.dy : list
 
 
 class KnightsPath:
     """ """
     def __init__(self, playground : list) -> None:
         """Initiate the class"""
-        self.dx : list
-        self.dy : list
         
         self.playground = playground
         self.dx = [2, 2, -2, -2, 1, 1, -1, -1]
@@ -54,26 +51,3 @@ class KnightsPath:
         def run(self) -> None:
             """Method to run the class"""
             self.find_path
-    
-
-class BishopsPath:
-    """ """
-    def __init__(self) -> None:
-        pass
-    
-
-class QueensPath:
-    """"""
-    def __init__(self) -> None:
-        pass
-    
-class KingsPath:
-    """"""
-    def __init__(self) -> None:
-        pass
-
-class PawnsPath:
-    """"""
-    def __init__(self) -> None:
-        pass
-    
