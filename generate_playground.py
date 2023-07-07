@@ -46,14 +46,18 @@ class GeneratePlayground:
             self.playground_grid.append(y)
             return self.playground_grid
 
-    def random_obstacles(self):
+    def random_obstacles(self) -> list:
         """Generate random obstacles on the playground grid"""
 
         obstacle: str = '|'
         for i in range(len(self.playground_grid)):
             for y in range(len(self.playground_grid[i])):
                 number_of_obstacles = int(self.playground_size // 4)
+                #replace random characters from playground_grid with '|'
+                return self.playground_grid
 
+    def placement(self):
+        """adds start and end"""
 
     @abstractmethod
     def run(self) -> None:
