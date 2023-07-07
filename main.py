@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Main file that runs whole code"""
+"""Main file"""
 from a_star_heuristics import AStar
 from breadth_first_search import BreadthFirstSearch
 from generate_playground import GeneratePlayground
