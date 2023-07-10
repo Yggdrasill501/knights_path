@@ -10,3 +10,5 @@ heuristics
 ## Results
 
 ## References
+- [Breadth first search](https://en.wikipedia.org/wiki/Breadth-first_search)
+- [A* search algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)
