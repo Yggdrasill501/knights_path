@@ -43,7 +43,7 @@ from collections import deque
 
 class BFS:
     """Bread first search class"""
-    def __init__(self, chessboard):
+    def __init__(self, chessboard) -> None:
         """Initializes"""
         self.chessboard = chessboard
         self.directions = [
@@ -57,7 +57,7 @@ class BFS:
             (2, -1)
         ]
 
-    def find_shortest_path(self, start_row, start_col, end_row, end_col):
+    def find_shortest_path(self, start_row, start_col, end_row, end_col) -> int:
         """Find shortest path from start to goal"""
         size = self.chessboard.get_size()
 
