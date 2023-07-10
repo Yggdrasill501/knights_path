@@ -1,3 +1,12 @@
 # Algorithm for shortest path of Knight
-- maybe in the future for all the figures
 
+
+## Breadth first search
+Algorithm
+
+## Astar vs Breadth first search
+heuristics
+
+## Results
+
+## References
