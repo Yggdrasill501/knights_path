@@ -3,6 +3,7 @@
 from abc import abstractmethod
 from random import randint
 
+
 class GeneratePlayground:
     """Class that generates playground with or without obstacles"""
     def __init__(self) -> None:

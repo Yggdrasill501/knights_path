@@ -41,7 +41,7 @@ from collections import deque
 #         return path, len(path) - 1
 
 
-class BreadthForSearch:
+class BreadthFirstSearch:
     """Bread first search class"""
     def __init__(self, chessboard) -> None:
         """Initializes"""

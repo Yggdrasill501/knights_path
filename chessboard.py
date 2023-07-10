@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Settings for playground"""
+"""Chessboard implementation file"""
 
 
 class Chessboard:

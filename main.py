@@ -6,10 +6,8 @@ from generate_playground import GeneratePlayground
 from analysis import Analysis
 
 
-
 if __name__ == '__main__':
     astar = AStar
     bfs = BreadthFirstSearch
     generate = GeneratePlayground
     analise = Analysis
-
