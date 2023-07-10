@@ -86,43 +86,43 @@ class BFS:
 
 class Chessboard:
     """Chessboard class"""
-    def __init__(self, size):
+    def __init__(self, size) -> None:
         """Initializes"""
         self.size = size
         self.board = [[-1 for _ in range(size)] for _ in range(size)]
 
-    def is_valid_move(self, row, col):
+    def is_valid_move(self, row, col) -> bool:
         """Check if move is valid"""
         return 0 <= row < self.size and 0 <= col < self.size and self.board[row][col] == -1
 
-    def get_cell(self, row, col):
+    def get_cell(self, row, col) -> int:
         """Get cell value"""
         return self.board[row][col]
 
-    def set_cell(self, row, col, value):
+    def set_cell(self, row, col, value) -> None:
         """Set cell value"""
         self.board[row][col] = value
 
-    def get_size(self):
+    def get_size(self) -> int:
         """Get size of chessboard"""
         return self.size
 
 
 # Usage example
-# size = 8  # Size of the chessboard
-# board = Chessboard(size)
-# bfs = BFS(board)
-#
-# start_row = 0
-# start_col = 0
-# end_row = 7
-# end_col = 7
-#
-# shortest_path = bfs.find_shortest_path(start_row, start_col, end_row, end_col)
-#
-# if shortest_path != -1:
-#     print(f"Shortest path from ({start_row},{start_col}) to ({end_row},{end_col}): {shortest_path}")
-# else:
-#     print("No valid path found.")
+size = 8  # Size of the chessboard
+board = Chessboard(size)
+bfs = BFS(board)
 
-# Path: queue_imlentation.py
+start_row = 0
+start_col = 0
+end_row = 7
+end_col = 7
+
+shortest_path = bfs.find_shortest_path(start_row, start_col, end_row, end_col)
+
+if shortest_path != -1:
+    print(f"Shortest path from ({start_row},{start_col}) to ({end_row},{end_col}): {shortest_path}")
+else:
+    print("No valid path found.")
+
+Path: queue_imlentation.py
