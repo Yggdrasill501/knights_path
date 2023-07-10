@@ -42,7 +42,9 @@ from collections import deque
 
 
 class BFS:
+    """Bread first search class"""
     def __init__(self, chessboard):
+        """Initializes"""
         self.chessboard = chessboard
         self.directions = [
             (2, 1),
@@ -56,6 +58,7 @@ class BFS:
         ]
 
     def find_shortest_path(self, start_row, start_col, end_row, end_col):
+        """Find shortest path from start to goal"""
         size = self.chessboard.get_size()
 
         if not self.chessboard.is_valid_move(start_row, start_col) or not self.chessboard.is_valid_move(end_row, end_col):
@@ -82,20 +85,26 @@ class BFS:
 
 
 class Chessboard:
+    """Chessboard class"""
     def __init__(self, size):
+        """Initializes"""
         self.size = size
         self.board = [[-1 for _ in range(size)] for _ in range(size)]
 
     def is_valid_move(self, row, col):
+        """Check if move is valid"""
         return 0 <= row < self.size and 0 <= col < self.size and self.board[row][col] == -1
 
     def get_cell(self, row, col):
+        """Get cell value"""
         return self.board[row][col]
 
     def set_cell(self, row, col, value):
+        """Set cell value"""
         self.board[row][col] = value
 
     def get_size(self):
+        """Get size of chessboard"""
         return self.size
 
 
