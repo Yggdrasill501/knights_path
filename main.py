@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Main file"""
-from a_star_heuristics import AStar
-from breadth_first_search import BreadthFirstSearch
-from generate_playground import GeneratePlayground
-from analysis import Analysis
+from src.a_star_heuristics import AStar
+from src.breadth_first_search import BreadthFirstSearch
+from src.generate_playground import GeneratePlayground
+from analyse.analysis import Analysis
 
 
 if __name__ == '__main__':
