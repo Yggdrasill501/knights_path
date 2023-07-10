@@ -9,7 +9,7 @@ class Queue:
         """Initialize"""
         self.items = []
 
-    def is_empty(self) -> object:
+    def is_empty(self) -> bool:
         """Check if queue is empty"""
         return self.items == []
 
@@ -17,6 +17,12 @@ class Queue:
         """Add item to queue"""
         self.items.insert(0, item)
 
-    def dequeue(self) -> object:
+    def dequeue(self) -> list:
         """Remove item from queue"""
-        return self.items.pop()
+        if self.is_empty():
+            raise IndexError("Queue is empty.")
+        return self.items.pop(0)
+
+    def size(self) -> int:
+        """Return size of queue"""
+        return len(self.items)
