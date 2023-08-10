@@ -6,7 +6,13 @@ from queue import PriorityQueue
 class AStar:
     """A-star heuristics class"""
     def __init__(self, chessboard) -> None:
-        """Initializes"""
+        """
+            Constructor
+            :param chessboard: chessboard representation
+            :rtype: None
+            list[tuple[int, int]]
+        """
+
         self.chessboard = chessboard
         self.directions = [
             (2, 1),

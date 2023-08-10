@@ -3,7 +3,7 @@
 from src.a_star_heuristics import AStar
 from src.breadth_first_search import BreadthFirstSearch
 from src.generate_playground import GeneratePlayground
-from analyse.analysis import Analysis
+from analysis.analysis import Analysis
 
 
 if __name__ == '__main__':
