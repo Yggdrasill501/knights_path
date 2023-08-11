@@ -6,4 +6,7 @@ class Analysis:
     """class for analysis BFS vs Astar"""
 
     def __init__(self) -> None:
-        """Initializes"""
+        """
+            Constructor
+            :rtype: None
+        """
