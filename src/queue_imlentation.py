@@ -6,23 +6,39 @@ class Queue:
     """Queue implementation using a list"""
 
     def __init__(self) -> None:
-        """Initialize"""
+        """
+            Constructor of queue
+            :rtype: None
+        """
         self.items = []
 
     def is_empty(self) -> bool:
-        """Check if queue is empty"""
+        """
+            Method Check if queue is empty
+            :rtype: bool
+        """
         return self.items == []
 
-    def enqueue(self, item) -> None:
-        """Add item to queue"""
+    def enqueue(self, item: list) -> None:
+        """
+            Method Add item to queue
+            :param item: item to add
+            :rtype: None
+        """
         self.items.insert(0, item)
 
     def dequeue(self) -> list:
-        """Remove item from queue"""
+        """
+            Method Remove item from queue
+            :rtype: list
+        """
         if self.is_empty():
             raise IndexError("Queue is empty.")
         return self.items.pop(0)
 
     def size(self) -> int:
-        """Return size of queue"""
+        """
+            Method Return size of queue
+            :rtype: int
+        """
         return len(self.items)
