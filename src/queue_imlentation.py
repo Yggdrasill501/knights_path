@@ -10,7 +10,7 @@ class Queue:
             Constructor of queue
             :rtype: None
         """
-        self.items = []
+        self.items: list = []
 
     def is_empty(self) -> bool:
         """
