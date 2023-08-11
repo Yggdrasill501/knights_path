@@ -7,8 +7,11 @@ from random import randint
 class GeneratePlayground:
     """Class that generates playground with or without obstacles"""
     def __init__(self) -> None:
-        """Initialize"""
-        self.playground_size : int
+        """
+            Constructor of Generate playground
+            :rtype: None
+        """
+        self.playground_size: int
         self.playground_grid: list
 
         self.playground_size = 4
@@ -20,7 +23,10 @@ class GeneratePlayground:
         ]
 
     def user_input(self) -> int:
-        """Method for user input"""
+        """
+            Method for user input
+            :rtype: int
+        """
         size: int
 
         print("You need to enter size of playground that you wanna you for knight,")
@@ -34,7 +40,10 @@ class GeneratePlayground:
         return self.playground_size
 
     def create_grid(self) -> list:
-        """Create playground grid"""
+        """
+            Method Create playground grid
+            :rtype: list
+            """
         x: list = []
         y: list = []
 
@@ -48,7 +57,10 @@ class GeneratePlayground:
             return self.playground_grid
 
     def random_obstacles(self) -> list:
-        """Generate random obstacles on the playground grid"""
+        """
+            Method Generate random obstacles on the playground grid
+            :rtype: list
+        """
 
         obstacle: str = '|'
         for i in range(len(self.playground_grid)):
@@ -58,11 +70,14 @@ class GeneratePlayground:
                 return self.playground_grid
 
     def placement(self):
-        """adds start and end"""
+        """Method adds start and end"""
 
     @abstractmethod
     def run(self) -> None:
-        """Runs Generate playground Class"""
+        """
+            Method Runs Generate playground Class
+            :rtype: None
+        """
         obstacles: str
 
         self.user_input()

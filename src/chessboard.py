@@ -4,23 +4,46 @@
 
 class Chessboard:
     """Chessboard class"""
-    def __init__(self, size) -> None:
-        """Initializes"""
-        self.size = size
-        self.board = [[-1 for _ in range(size)] for _ in range(size)]
+    def __init__(self, size: int) -> None:
+        """
+            Constructor of chessboard
+            :param size: size of chessboard
+            :rtype: None
+        """
+        self.size: int = size
+        self.board: list = [[-1 for _ in range(size)] for _ in range(size)]
 
-    def is_valid_move(self, row, col) -> bool:
-        """Check if move is valid"""
+    def is_valid_move(self, row: int, col: int) -> bool:
+        """
+            Method Check if move is valid
+            :param row: row int of chessboard
+            :param col: column int of chessboard
+            :rtype: bool
+        """
         return 0 <= row < self.size and 0 <= col < self.size and self.board[row][col] == -1
 
-    def get_cell(self, row, col) -> int:
-        """Get cell value"""
+    def get_cell(self, row: int, col: int) -> int:
+        """
+            Method Get cell value
+            :param row: row int of chessboard
+            :param col: column int of chessboard
+            :rtype: int
+        """
         return self.board[row][col]
 
     def set_cell(self, row, col, value) -> None:
-        """Set cell value"""
+        """
+            Method Set cell value
+            :param row: row int of chessboard
+            :param col: column int of chessboard
+            :param value: value to set
+            :rtype: None
+        """
         self.board[row][col] = value
 
     def get_size(self) -> int:
-        """Get size of chessboard"""
+        """
+            Method Get size of chessboard
+            :rtype: int
+        """
         return self.size
