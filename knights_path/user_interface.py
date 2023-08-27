@@ -10,15 +10,18 @@ LOGGER = logging.getLogger(__name__)
 class UserInterface:
     """Class for interaction with user"""
     def __init__(self) -> None:
-        """Constructor of UserInterface"""
-        pass
+        """Constructor of UserInterface
+
+        :rtype: None
+        """
+        self._chessboard_size: int = 3
 
     def _user_interface(self):
         """Method that interact with user"""
         print("Hello, this is the program that will show you the shortest path of knight")
         try:
-            chessboard_size = int(input("Enter size of chessboard: "))
-            logging.info("Chessboard size: %s", chessboard_size)
+            self.chessboard_size = int(input("Enter size of chessboard: "))
+            logging.info("Chessboard size: %s", self.chessboard_size)
 
         except ValueError:
             logging.error("Invalid input type")
@@ -66,7 +69,7 @@ class UserInterface:
             return -1
 
         try:
-            return chessboard_size, game_mode, knight_row, knight_col, obstacles
+            return self.chessboard_size, game_mode, knight_row, knight_col, obstacles
 
         except UnboundLocalError:
             logging.error("Return error")
