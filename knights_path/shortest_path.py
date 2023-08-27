@@ -3,9 +3,13 @@
 import queue
 from random import randint, choice
 import logging
+import threading
+
 from my_queue.queue import Queue
 
+
 logging.basicConfig(level=logging.DEBUG)
+LOGGER = logging.getLogger(__name__)
 
 
 class ShortestPathKnight:

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import logging
+import threading
 # import argparse
 
 logging.basicConfig(level=logging.ERROR)
+LOGGER = logging.getLogger(__name__)
 
 
 class UserInterface:

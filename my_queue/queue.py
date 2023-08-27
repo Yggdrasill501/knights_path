@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 """Implementation of queue"""
+import logging
+import threading
+
+logging.basicConfig(level=logging.DEBUG)
+LOGGER = logging.getLogger(__name__)
 
 
 class Queue:
