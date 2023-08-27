@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
-import argparse
+# import argparse
 
 logging.basicConfig(level=logging.ERROR)
 
@@ -49,3 +49,5 @@ class UserInterface:
         except ValueError:
             logging.error("Invalid input type")
             return -1
+
+        return chessboard_size, game_mode, knight_row, knight_col, obstacles

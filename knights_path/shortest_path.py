@@ -57,7 +57,7 @@ class ShortestPathKnight:
 
         return self._chessboard
 
-    def _placemnet(self) -> list:
+    def _placement(self) -> list:
         """Method that add knight to the chessboard
 
         :return list: chessboard with knight
@@ -65,18 +65,23 @@ class ShortestPathKnight:
         """
         if self._random:
             self._start_position = (randint(0, self._chessboard_size-1), randint(0, self._chessboard_size-1))
-            # TODO: append ranom start position to the chessboard
+            # TODO: append random start position to the chessboard
             self._end_position = (randint(0, self._chessboard_size-1), randint(0, self._chessboard_size-1))
             # TODO: append random end position to the chessboard
 
-
         else:
-            # TODO: append ranom start position to the chessboard
+            # TODO: append random start position to the chessboard
             # TODO: append random end position to the chessboard
             pass
 
         return self._chessboard
-    def BFS(self):
+
+    def bfs(self) -> list:
+        """Method that implement BFS algorythm
+
+        :return: shortest path
+        :rtype: list
+        """
         # Todo: implement BFS
         pass
 
