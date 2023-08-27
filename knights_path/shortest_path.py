@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Algorythm for shortest path of knight."""
+import queue
 from random import randint, choice
 import logging
+from my_queue.queue import Queue
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -19,7 +21,7 @@ class ShortestPathKnight:
         :param end_position: end position of knight
         :param chessboard_size: size of chessboard
         :param obstacles: if True, obstacles will be generated
-        :param obstacles: if false, obstacles will not be generated
+        :param obstacles: if False, obstacles will not be generated
         :param start_position: start position of knight
         :param random_positions: if True, start position will be generated randomly
         :rtype: None
@@ -86,6 +88,8 @@ class ShortestPathKnight:
         :rtype: list
         """
         # Todo: implement BFS
+        Queue()
+        return self._chessboard
         pass
 
 
