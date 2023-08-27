@@ -92,7 +92,7 @@ class ShortestPathKnight:
         :rtype: list
         """
         # Todo: implement BFS
-        Queue()
+        Queue.dequeue()
         return self._chessboard
         pass
 
