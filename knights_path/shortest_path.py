@@ -46,6 +46,7 @@ class ShortestPathKnight:
         :rtype: list
         """
         self._chessboard = [[0 for _ in range(self._chessboard_size)] for _ in range(self._chessboard_size)]
+        logging.info("Chessboard: %s", self._chessboard)
 
         return self._chessboard
 
@@ -63,6 +64,7 @@ class ShortestPathKnight:
                 if zero_coords:
                     row, col = choice(zero_coords)
                     self._chessboard[row][col] = 1
+        logging.info("Chessboard with obstacles: %s", self._chessboard)
 
         return self._chessboard
 
@@ -83,6 +85,8 @@ class ShortestPathKnight:
             # TODO: append random end position to the chessboard
             pass
 
+        logging.info("Chessboard with knight: %s", self._chessboard)
+
         return self._chessboard
 
     def bfs(self) -> list:
@@ -93,9 +97,7 @@ class ShortestPathKnight:
         """
         # Todo: implement BFS
         Queue.dequeue()
+
+        logging.info("Shortest path: %s", self._chessboard)
         return self._chessboard
         pass
-
-
-if __name__ == '__main__':
-    pass
