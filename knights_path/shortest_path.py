@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Algorythm for shortest path of knight."""
 from random import randint, choice
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class ShortestPathKnight:
