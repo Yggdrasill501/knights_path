@@ -5,7 +5,7 @@
 class Console:
     """Class for interaction with user"""
     def __init__(self) -> None:
-        """"
-            Constructor
-            :rtype: None
+        """Constructor
+
+        :rtype: None
         """

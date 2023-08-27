@@ -44,7 +44,11 @@ from collections import deque
 class BreadthFirstSearch:
     """Bread first search class"""
     def __init__(self, chessboard) -> None:
-        """Initializes"""
+        """Constructor of BFS
+
+        :param chessboard: chessboard representation
+        :rtype: None
+        """
         self.chessboard = chessboard
         self.directions = [
             (2, 1),
@@ -58,7 +62,15 @@ class BreadthFirstSearch:
         ]
 
     def find_shortest_path(self, start_row, start_col, end_row, end_col) -> int:
-        """Find shortest path from start to goal"""
+        """Find the shortest path from start to goal
+
+        :param start_row: start row
+        :param start_col: start column
+        :param end_row: end row
+        :param end_col: end column
+        :return: number of steps
+        :rtype: int
+        """
         size = self.chessboard.get_size()
 
         if not self.chessboard.is_valid_move(start_row, start_col) or not self.chessboard.is_valid_move(end_row, end_col):

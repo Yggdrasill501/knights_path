@@ -6,10 +6,11 @@ from random import randint
 
 class GeneratePlayground:
     """Class that generates playground with or without obstacles"""
+
     def __init__(self) -> None:
-        """
-            Constructor of Generate playground
-            :rtype: None
+        """Constructor of Generate playground
+
+        :rtype: None
         """
         self.playground_size: int
         self.playground_grid: list
@@ -23,9 +24,9 @@ class GeneratePlayground:
         ]
 
     def user_input(self) -> int:
-        """
-            Method for user input
-            :rtype: int
+        """Method for user input
+
+        :rtype: int
         """
         size: int
 
@@ -40,10 +41,10 @@ class GeneratePlayground:
         return self.playground_size
 
     def create_grid(self) -> list:
+        """Method Create playground grid
+
+        :rtype: list
         """
-            Method Create playground grid
-            :rtype: list
-            """
         x: list = []
         y: list = []
 
@@ -57,9 +58,9 @@ class GeneratePlayground:
             return self.playground_grid
 
     def random_obstacles(self) -> list:
-        """
-            Method Generate random obstacles on the playground grid
-            :rtype: list
+        """Method Generate random obstacles on the playground grid
+
+        :rtype: list
         """
 
         obstacle: str = '|'
@@ -74,9 +75,9 @@ class GeneratePlayground:
 
     @abstractmethod
     def run(self) -> None:
-        """
-            Method Runs Generate playground Class
-            :rtype: None
+        """Method Runs Generate playground Class
+
+        :rtype: None
         """
         obstacles: str
 

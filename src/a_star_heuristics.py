@@ -6,11 +6,11 @@ from queue import PriorityQueue
 class AStar:
     """A-star heuristics class"""
     def __init__(self, chessboard) -> None:
-        """
-            Constructor
-            :param chessboard: chessboard representation
-            :rtype: None
-            list[tuple[int, int]]
+        """Constructor
+
+        :param chessboard: chessboard representation
+        :rtype: None
+        list[tuple[int, int]]
         """
 
         self.chessboard = chessboard
@@ -26,10 +26,28 @@ class AStar:
         ]
 
     def heuristic(self, row, col, end_row, end_col) -> int:
+        """Method Implementing the Manhattan distance heuristic
+
+        :param row: row int of chessboard
+        :param col: column int of chessboard
+        :param end_row: end row int of chessboard
+        :param end_col: end column int of chessboard
+        :return: Manhattan distance heuristic
+        :rtype: int
+        """
         # Implementing the Manhattan distance heuristic
         return abs(row - end_row) + abs(col - end_col)
 
     def find_shortest_path(self, start_row, start_col, end_row, end_col) -> int:
+        """Method Find the shortest path from start to goal
+
+        :param start_row: start row
+        :param start_col: start column
+        :param end_row: end row
+        :param end_col: end column
+        :return int: the shortest path
+        :rtype: int
+        """
         if not self.chessboard.is_valid_move(start_row, start_col) or not self.chessboard.is_valid_move(end_row, end_col):
             raise ValueError("Invalid start or end position.")
 

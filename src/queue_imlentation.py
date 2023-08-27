@@ -20,25 +20,25 @@ class Queue:
         return self.items == []
 
     def enqueue(self, item: list) -> None:
-        """
-            Method Add item to queue
-            :param item: item to add
-            :rtype: None
+        """Method Add item to queue
+
+        :param item: item to add
+        :rtype: None
         """
         self.items.insert(0, item)
 
     def dequeue(self) -> list:
-        """
-            Method Remove item from queue
-            :rtype: list
+        """Method Remove item from queue
+
+        :rtype: list
         """
         if self.is_empty():
             raise IndexError("Queue is empty.")
         return self.items.pop(0)
 
     def size(self) -> int:
-        """
-            Method Return size of queue
-            :rtype: int
+        """Method Return size of queue
+
+        :rtype: int
         """
         return len(self.items)
