@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """Algorythm for shortest path of knight."""
 import queue
+import sys
 from random import randint, choice
 import logging
 import threading
-
-from my_queue.queue import Queue
+from collections import deque
+# from my_queue.queue import Queue
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -36,10 +37,11 @@ class ShortestPathKnight:
         self._start_position: tuple = start_position
         self._end_position: tuple = end_position
         self._random: bool = random_positions
+        self.knight_moves: list = [(2, 1), (1, 2), (-1, -2), (-2, -1), (-2, 1), (-1, 2), (1, -2), (2, -1)]
 
         self._chessboard = []
 
-    def _chessboard_generator(self) -> list:
+    def chessboard_generator(self) -> list:
         """Method Generate chessboard
 
         :return chessboard: generated chessboard
@@ -50,7 +52,7 @@ class ShortestPathKnight:
 
         return self._chessboard
 
-    def _obstacles(self) -> list:
+    def obstacles(self) -> list:
         """Method that add random obstacles to the chessboard
 
         :return list: chessboard with obstacles
@@ -68,7 +70,7 @@ class ShortestPathKnight:
 
         return self._chessboard
 
-    def _placement(self) -> list:
+    def placement(self) -> list:
         """Method that add knight to the chessboard
 
         :return list: chessboard with knight
@@ -95,9 +97,35 @@ class ShortestPathKnight:
         :return: shortest path
         :rtype: list
         """
-        # Todo: implement BFS
-        Queue.dequeue()
+        visited = set()
 
-        logging.info("Shortest path: %s", self._chessboard)
-        return self._chessboard
-        pass
+        queue = deque([self._start_position])
+
+        while queue:
+            (cur_x, cur_y), steps = queue.popleft()
+
+            if (cur_x, cur_y) == self._end_position:
+                return steps
+
+            if (cur_x, cur_y) in visited:
+                continue
+
+            visited.add((cur_x, cur_y))
+
+            for dx, dy in self.knight_moves:
+                next_x, next_y = cur_x + dx, cur_y + dy
+
+                if self._is_valid_move(next_x, next_y):
+                    queue.append(((next_x, next_y), steps + 1))
+
+        sys.exit("No path found")
+
+    def _is_valid_move(self, x: int, y: int) -> bool:
+        """Method that check if move is valid
+
+        :param x: x coordinate
+        :param y: y coordinate
+        :return: True if move is valid, False if move is not valid
+        """
+        return 0 <= x < self.rows and 0 <= y < self.cols and self.board[x][y] != 'X'
+        # TODO: divide chessboard into rows and columns

@@ -4,6 +4,7 @@ import threading
 import argparse
 from abc import abstractmethod
 
+
 logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)
 
