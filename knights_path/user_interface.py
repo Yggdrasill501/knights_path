@@ -2,6 +2,7 @@
 import logging
 import threading
 import argparse
+from abc import abstractmethod
 
 logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)
@@ -74,3 +75,8 @@ class UserInterface:
         except UnboundLocalError:
             logging.error("Return error")
             return -1
+
+    @abstractmethod
+    def run(self):
+        """Method that run program"""
+        self._user_interface()
