@@ -6,6 +6,7 @@ from random import randint, choice
 import logging
 import threading
 from collections import deque
+import pathlib
 # from my_queue.queue import Queue
 
 
@@ -47,7 +48,7 @@ class ShortestPathKnight:
         :return chessboard: generated chessboard
         :rtype: list
         """
-        self._chessboard = [[0 for _ in range(self._chessboard_size)] for _ in range(self._chessboard_size)]
+        self._chessboard.append([[0 for _ in range(self._chessboard_size)] for _ in range(self._chessboard_size)])
         logging.info("Chessboard: %s", self._chessboard)
 
         return self._chessboard
@@ -129,3 +130,24 @@ class ShortestPathKnight:
         """
         return 0 <= x < self.rows and 0 <= y < self.cols and self.board[x][y] != 'X'
         # TODO: divide chessboard into rows and columns
+
+    def _chessboard_from_file(self, file: pathlib.Path) -> list:
+        """Method that load chess board from file
+
+        :exception FileNotFound:
+
+        :param file: pathlib.Path file, with chess board size, obstacles and start and end
+        :return list: self._chessboard
+        :retype list:
+        """
+        self._chessboard.clear()
+
+        try:
+            with open(file, 'r') as file:
+                self._chessboard = [list(line.strip()) for line in file]
+
+            return self._chessboard
+
+        except FileNotFoundError:
+            logging.error("file doesnt exist or is empty")
+            sys.exit(1)
