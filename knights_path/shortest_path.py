@@ -1,52 +1,60 @@
 # -*- coding: utf-8 -*-
 """Algorythm for shortest path of knight."""
-import sys
-from random import randint, choice
-import logging
+from knights_path.chessboard import Chessboard
 from collections import deque
-import pathlib
-# from my_queue.queue import Queue
-
+import logging
+import sys
 
 logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger(__name__)
 
 
-class ShortestPathKnight:
+class ShortestPathKnight(Chessboard):
     """Class for the shortest path of knight"""
 
-    def __int__(self) -> None:
+    def __int__(self, file) -> None:
         """Constructor of ShortestPathKnight
+
+        :param file: file with chessboard
         :rtype: None
         """
+        Chessboard.__init__(self, file=file)
         self.knight_moves: list = [(2, 1), (1, 2), (-1, -2), (-2, -1), (-2, 1), (-1, 2), (1, -2), (2, -1)]
-        self.start_position = None
-        self.end_position = None
-        self.chessboard: list = []
+        self.size: int = len(self.chessboard)
 
-    def chessboard_from_file(self, file: pathlib.Path) -> list:
-        """Method that load chess board from file
+    def breath_first_search(self) -> str:
+        """Method for breath first search
 
-        :exception FileNotFound:
-
-        :param file: pathlib.Path file, with chess board size, obstacles and start and end
-        :return list: self._chessboard
-        :retype list:
+        :return: number of steps to reach end position
+        :rtype: str
         """
-        try:
-            with open(file, 'r') as file:
-               self.chessboard = [list(line.strip()) for line in file]
+        queue = deque([self.start])
+        self.chessboard[self.start[0]][self.start[1]] = 0
 
-            for i in range(len(self.chessboard)):
-                for j in range(len(self.chessboard[0])):
-                    if self.chessboard[i][j] == 'S':
-                        self.start_position = (i, j)
+        while queue:
+            row, col = queue.popleft()
 
-                    elif self.chessboard[i][j] == 'E':
-                        self.end_position = (i, j)
+            if (row, col) == self.end:
+                return self.chessboard[row][col]
 
-            return self.chessboard
+            for d_row, d_col in self.knight_moves:
+                new_row, new_col = row + d_row, col + d_col
 
-        except FileNotFoundError:
-            logging.error("file doesnt exist or is empty")
+                if self._is_valid_move(new_row, new_col):
+                    queue.append((new_row, new_col))
+                    self.chessboard[new_row][new_col] = self.chessboard[row][col] + 1
+                    queue.append((new_row, new_col))
+        else:
+            LOGGER.error("No path found")
             sys.exit(1)
+
+    def _is_valid_move(self, row: int, col: int) -> bool:
+        """Helper method that check's if the move is valid
+
+        :param row: row of chessboard
+        :param col: column of chessboard
+        :return: True if move is valid
+        :return: False if move is not valid
+        :rtype: bool
+        """
+        return 0 <= row < self.size and 0 <= col < self.size

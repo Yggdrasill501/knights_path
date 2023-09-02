@@ -13,5 +13,3 @@ def user_interface(chessboard_file):
     print("Please enter file with chessboard, start position as S and end position as E.")
     print("Minimal chessboard size is 3x3")
 
-    shortest_path = ShortestPathKnight()
-    chessboard = shortest_path.chessboard_from_file(file=chessboard_file)

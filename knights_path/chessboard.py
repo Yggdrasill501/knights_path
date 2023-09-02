@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)
 
 
-class ChessBoard:
+class Chessboard:
     """Read gird from file and find neighbors of a position."""
 
     def __init__(self, file) -> None:
@@ -18,18 +18,18 @@ class ChessBoard:
         """
         try:
             with open(file, 'r') as file:
-                self.grid = [list(line.strip()) for line in file]
+                self.chessboard = [list(line.strip()) for line in file]
 
-            self.start, self.goal = None, None
-            for i in range(len(self.grid)):
-                for j in range(len(self.grid[0])):
-                    if self.grid[i][j] == 'S':
+            self.start, self.end = None, None
+            for i in range(len(self.chessboard)):
+                for j in range(len(self.chessboard[0])):
+                    if self.chessboard[i][j] == 'S':
                         self.start = (i, j)
 
-                    elif self.grid[i][j] == 'E':
-                        self.goal = (i, j)
+                    elif self.chessboard[i][j] == 'E':
+                        self.end = (i, j)
 
-            if self.start is None or self.goal is None:
+            if self.start is None or self.end is None:
                 logging.error("Start or goal not found in the grid.")
                 sys.exit(1)
 
