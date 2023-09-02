@@ -1,153 +1,68 @@
 # -*- coding: utf-8 -*-
 """Algorythm for shortest path of knight."""
-import queue
-import sys
-from random import randint, choice
-import logging
-import threading
+from knights_path.chessboard import Chessboard
+from knights_path.exeptions import InvalidMove
+from knights_path.component_system import log_function_call
 from collections import deque
-import pathlib
-# from my_queue.queue import Queue
-
+import logging
+import sys
 
 logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger(__name__)
 
 
-class ShortestPathKnight:
-    """Class for the shortest path of knight"""
+class ShortestPathKnight(Chessboard):
+    """Class for the shortest path of knight."""
 
-    def __int__(self, end_position: tuple,
-                chessboard_size: int = 3,
-                obstacles: bool = False,
-                start_position: tuple = (0, 0),
-                random_positions: bool = False) -> None:
-        """Constructor of ShortestPathKnight
+    def __int__(self, file) -> None:
+        """Constructor of ShortestPathKnight.
 
-        :param end_position: end position of knight
-        :param chessboard_size: size of chessboard
-        :param obstacles: if True, obstacles will be generated
-        :param obstacles: if False, obstacles will not be generated
-        :param start_position: start position of knight
-        :param random_positions: if True, start position will be generated randomly
+        :param file: file with chessboard
         :rtype: None
         """
-
-        self._chessboard_size: int = chessboard_size
-        self._obstacles: bool = obstacles
-        self._start_position: tuple = start_position
-        self._end_position: tuple = end_position
-        self._random: bool = random_positions
+        Chessboard.__init__(self, file=file)
         self.knight_moves: list = [(2, 1), (1, 2), (-1, -2), (-2, -1), (-2, 1), (-1, 2), (1, -2), (2, -1)]
+        self.size: int = len(self.chessboard)
 
-        self._chessboard = []
+    @log_function_call
+    def breath_first_search(self) -> str:
+        """Method for breath first search.
 
-    def chessboard_generator(self) -> list:
-        """Method Generate chessboard
-
-        :return chessboard: generated chessboard
-        :rtype: list
+        :return: number of steps to reach end position
+        :rtype: str
         """
-        self._chessboard.append([[0 for _ in range(self._chessboard_size)] for _ in range(self._chessboard_size)])
-        logging.info("Chessboard: %s", self._chessboard)
-
-        return self._chessboard
-
-    def obstacles(self) -> list:
-        """Method that add random obstacles to the chessboard
-
-        :return list: chessboard with obstacles
-        :rtype: list
-        """
-
-        if self._obstacles:
-            for i in range(self._chessboard_size//3):
-                zero_coords = [(row, col) for row, line in enumerate(self._chessboard) for col, value in enumerate(line) if value == 0]
-
-                if zero_coords:
-                    row, col = choice(zero_coords)
-                    self._chessboard[row][col] = 1
-        logging.info("Chessboard with obstacles: %s", self._chessboard)
-
-        return self._chessboard
-
-    def placement(self) -> list:
-        """Method that add knight to the chessboard
-
-        :return list: chessboard with knight
-        :rtype: list
-        """
-        if self._random:
-            self._start_position = (randint(0, self._chessboard_size-1), randint(0, self._chessboard_size-1))
-            # TODO: append random start position to the chessboard
-            self._end_position = (randint(0, self._chessboard_size-1), randint(0, self._chessboard_size-1))
-            # TODO: append random end position to the chessboard
-
-        else:
-            # TODO: append random start position to the chessboard
-            # TODO: append random end position to the chessboard
-            pass
-
-        logging.info("Chessboard with knight: %s", self._chessboard)
-
-        return self._chessboard
-
-    def bfs(self) -> list:
-        """Method that implement BFS algorythm
-
-        :return: shortest path
-        :rtype: list
-        """
-        visited = set()
-
-        queue = deque([self._start_position])
+        queue = deque([self.start])
+        self.chessboard[self.start[0]][self.start[1]] = 0
 
         while queue:
-            (cur_x, cur_y), steps = queue.popleft()
+            row, col = queue.popleft()
 
-            if (cur_x, cur_y) == self._end_position:
-                return steps
+            if (row, col) == self.end:
+                return self.chessboard[row][col]
 
-            if (cur_x, cur_y) in visited:
-                continue
+            for d_row, d_col in self.knight_moves:
+                new_row, new_col = row + d_row, col + d_col
 
-            visited.add((cur_x, cur_y))
+                if self._is_valid_move(new_row, new_col):
+                    queue.append((new_row, new_col))
+                    self.chessboard[new_row][new_col] = self.chessboard[row][col] + 1
+                    queue.append((new_row, new_col))
+        else:
+            LOGGER.error("No path found")
+            sys.exit(1)
 
-            for dx, dy in self.knight_moves:
-                next_x, next_y = cur_x + dx, cur_y + dy
+    def _is_valid_move(self, row: int, col: int) -> bool:
+        """Helper method that check's if the move is valid.
 
-                if self._is_valid_move(next_x, next_y):
-                    queue.append(((next_x, next_y), steps + 1))
-
-        sys.exit("No path found")
-
-    def _is_valid_move(self, x: int, y: int) -> bool:
-        """Method that check if move is valid
-
-        :param x: x coordinate
-        :param y: y coordinate
-        :return: True if move is valid, False if move is not valid
+        :param row: row of chessboard
+        :param col: column of chessboard
+        :return: True if move is valid
+        :return: False if move is not valid
+        :rtype: bool
         """
-        return 0 <= x < self.rows and 0 <= y < self.cols and self.board[x][y] != 'X'
-        # TODO: divide chessboard into rows and columns
-
-    def _chessboard_from_file(self, file: pathlib.Path) -> list:
-        """Method that load chess board from file
-
-        :exception FileNotFound:
-
-        :param file: pathlib.Path file, with chess board size, obstacles and start and end
-        :return list: self._chessboard
-        :retype list:
-        """
-        self._chessboard.clear()
-
         try:
-            with open(file, 'r') as file:
-                self._chessboard = [list(line.strip()) for line in file]
+            return 0 <= row < self.size and 0 <= col < self.size
 
-            return self._chessboard
-
-        except FileNotFoundError:
-            logging.error("file doesnt exist or is empty")
+        except InvalidMove:
+            LOGGER.error("Invalid move")
             sys.exit(1)

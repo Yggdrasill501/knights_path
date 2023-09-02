@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Main file"""
-import logging
-import threading
-
-from knights_path.shortest_path import ShortestPathKnight
-from knights_path.user_interface import UserInterface
-
-LOGGER = logging.getLogger(__name__)
-
+"""Main file, runs whole code."""
+from user_interface import user_interface
 
 if __name__ == '__main__':
-    ui = UserInterface()
-    ui.run()
+    user_interface(chessboard_file="chessboard.txt")
