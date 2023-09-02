@@ -2,6 +2,7 @@
 """File reads chessboard file"""
 import logging
 import sys
+from knights_path.exeptions import InvalidChessboard
 
 logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)
@@ -35,4 +36,8 @@ class Chessboard:
 
         except FileNotFoundError:
             logging.error("file doesnt exist or is empty")
+            sys.exit(1)
+
+        except InvalidChessboard:
+            logging.error("Invalid chessboard")
             sys.exit(1)
