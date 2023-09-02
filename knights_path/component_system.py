@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Implementation of component system"""
+"""Implementation of component system."""
 import logging
 
 logging.basicConfig(level=logging.INFO)

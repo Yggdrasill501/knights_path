@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""File reads chessboard file"""
+"""File reads chessboard file."""
 import logging
 import sys
 from knights_path.exeptions import InvalidChessboard
@@ -12,7 +12,7 @@ class Chessboard:
     """Read gird from file and find neighbors of a position."""
 
     def __init__(self, file) -> None:
-        """Constructor of chessboard
+        """Constructor of chessboard.
 
         :param file: file with chessboard
         :rtype: None

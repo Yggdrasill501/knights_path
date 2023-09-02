@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Main file"""
+"""Main file, runs whole code."""
 from user_interface import user_interface
 
 if __name__ == '__main__':

@@ -4,7 +4,6 @@ from knights_path.chessboard import Chessboard
 from knights_path.exeptions import InvalidMove
 from knights_path.component_system import log_function_call
 from collections import deque
-import heapq
 import logging
 import sys
 
@@ -13,10 +12,10 @@ LOGGER = logging.getLogger(__name__)
 
 
 class ShortestPathKnight(Chessboard):
-    """Class for the shortest path of knight"""
+    """Class for the shortest path of knight."""
 
     def __int__(self, file) -> None:
-        """Constructor of ShortestPathKnight
+        """Constructor of ShortestPathKnight.
 
         :param file: file with chessboard
         :rtype: None
@@ -27,7 +26,7 @@ class ShortestPathKnight(Chessboard):
 
     @log_function_call
     def breath_first_search(self) -> str:
-        """Method for breath first search
+        """Method for breath first search.
 
         :return: number of steps to reach end position
         :rtype: str
@@ -53,7 +52,7 @@ class ShortestPathKnight(Chessboard):
             sys.exit(1)
 
     def _is_valid_move(self, row: int, col: int) -> bool:
-        """Helper method that check's if the move is valid
+        """Helper method that check's if the move is valid.
 
         :param row: row of chessboard
         :param col: column of chessboard

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""File with user interface"""
+"""File with user interface."""
 import logging
 from knights_path.shortest_path import ShortestPathKnight
 import time
