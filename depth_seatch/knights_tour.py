@@ -74,8 +74,11 @@ class KnightsTour:
             return True
 
         possible_knight_moves: list = []
+
         for i in range(self.chessboard_size):
             new_row, new_colum = row + self.moves_row[i], colum + self.moves_colum[i]
-            if self.is_valid_move(new_row, new_col):
-                possible_moves.append((new_row, new_col, self.warnsdorff_count(new_row, new_col)))
-        possible_moves.sort(key=lambda t: t[2])
+
+            if self._is_valid_move(new_row, new_colum):
+                possible_knight_moves.append((new_row, new_colum, self._warnsdorffs_count(new_row, new_colum)))
+
+        possible_knight_moves.sort(key=lambda t: t[2])
