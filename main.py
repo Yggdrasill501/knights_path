@@ -3,7 +3,6 @@
 from breath_first_search.user_interface import user_interface
 from depth_seatch.console_ui import ConsoleUi
 
-import sys
 import logging
 
 logging.basicConfig(level=logging.ERROR)
