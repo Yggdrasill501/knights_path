@@ -39,10 +39,10 @@ class KnightsTour:
             MODULE_LOGGER.info("No valid move")
             return False
 
-    def warnsdorffs_count(self,
+    def _warnsdorffs_count(self,
                           row: int,
                           colum: int) -> int:
-        """Method with implementation of Warnsdorff's rule.
+        """Private method with implementation of Warnsdorff's rule.
 
         :param row: int, row of the chessboard
         :param colum: int, colum of the chessboard
@@ -55,3 +55,27 @@ class KnightsTour:
             if self._is_valid_move(new_row, new_colum):
                 count += 1
         return count
+
+    def _depth_first_search(self,
+                            row: int,
+                            colum: int,
+                            move_count: int) -> bool:
+        """Private method for implementation of depth first search algorithm.
+        Sort possible moves by Warnsdorff's rule (smallest number of onward moves)
+
+        :param row: int, row of the chessboard
+        :param colum: int, colum of the chessboard
+        :param move_count: int, count of moves of knight on the chessboard
+        :returns True: if bla bla
+        :returns Flase: if bla bla
+        :rtype bool:
+        """
+        if move_count == self.chessboard_size * self.chessboard_size:
+            return True
+
+        possible_knight_moves: list = []
+        for i in range(self.chessboard_size):
+            new_row, new_colum = row + self.moves_row[i], colum + self.moves_colum[i]
+            if self.is_valid_move(new_row, new_col):
+                possible_moves.append((new_row, new_col, self.warnsdorff_count(new_row, new_col)))
+        possible_moves.sort(key=lambda t: t[2])
