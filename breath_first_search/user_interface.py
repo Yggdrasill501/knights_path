@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)
 
 
-def user_interface(chessboard_file):
+def user_interface():
     """Function for user interface"""
     print("Welcome to the shortest path of knight.")
     print("Please enter file with chessboard, start position as S and end position as E, or edit existing one.")
@@ -15,7 +15,7 @@ def user_interface(chessboard_file):
 
     x = input("Enter file name: ")
 
-    shortest_path = ShortestPathKnight(chessboard_file)
+    shortest_path = ShortestPathKnight(x)
 
 
 

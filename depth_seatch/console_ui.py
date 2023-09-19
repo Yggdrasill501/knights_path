@@ -17,7 +17,6 @@ class ConsoleUi:
         """
 
     def user_interface(self):
-        print("Hello user, you started knights tour program")
         try:
             board_size = int(input("Enter the board size: "))
 
