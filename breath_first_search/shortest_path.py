@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Algorythm for shortest path of knight."""
-from knights_path.chessboard import Chessboard
-from knights_path.exeptions import InvalidMove
-from knights_path.component_system import log_function_call
+from breath_first_search.chessboard import Chessboard
+from breath_first_search.exeptions import InvalidMove
+from breath_first_search.component_system import log_function_call
 from collections import deque
 import logging
 import sys
@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 class ShortestPathKnight(Chessboard):
     """Class for the shortest path of knight."""
 
-    def __int__(self, file) -> None:
+    def __init__(self, file) -> None:
         """Constructor of ShortestPathKnight.
 
         :param file: file with chessboard

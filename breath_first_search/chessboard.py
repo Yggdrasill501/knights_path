@@ -2,7 +2,7 @@
 """File reads chessboard file."""
 import logging
 import sys
-from knights_path.exeptions import InvalidChessboard
+from breath_first_search.exeptions import InvalidChessboard
 
 logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)

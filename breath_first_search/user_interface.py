@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """File with user interface."""
 import logging
-from knights_path.shortest_path import ShortestPathKnight
+from breath_first_search.shortest_path import ShortestPathKnight
 
 logging.basicConfig(level=logging.ERROR)
 LOGGER = logging.getLogger(__name__)
