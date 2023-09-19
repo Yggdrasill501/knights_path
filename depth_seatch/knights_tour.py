@@ -17,9 +17,23 @@ class KnightsTour:
         :rtype None:
         """
         self.chessboard_size = board_size
-        self.board = [[-1 for _ in range(board_size)] for _ in range(board_size)]
+        self.chessboard = [[-1 for _ in range(board_size)] for _ in range(board_size)]
         self.moves_row = [2, 1, -1, -2, -2, -1, 1, 2]
         self.moves_colum = [1, 2, 2, 1, -1, -2, -2, -1]
+
+    def find_path(self,
+                  start_row: int = 0,
+                  start_colum: int = 0):
+        """Method that finds path of the knight.
+
+        :param start_row: int
+        :param start_colum:
+        """
+        self.chessboard[start_row][start_colum] = 0
+        if not self._depth_first_search(start_row, start_colum, 1):
+            MODULE_LOGGER.info("Solution does not exist")
+        else:
+            self._print_path()
 
     def _is_valid_move(self,
                        row: int,
@@ -32,7 +46,7 @@ class KnightsTour:
         :returns False: if the move is not valid
         :rtype bool:
         """
-        if 0 <= row < self.chessboard_size and 0 <= colum < self.chessboard_size and self.board[row][colum] == -1:
+        if 0 <= row < self.chessboard_size and 0 <= colum < self.chessboard_size and self.chessboard[row][colum] == -1:
             MODULE_LOGGER.info("Move is valid")
             return True
         else:
@@ -40,8 +54,8 @@ class KnightsTour:
             return False
 
     def _warnsdorffs_count(self,
-                          row: int,
-                          colum: int) -> int:
+                           row: int,
+                           colum: int) -> int:
         """Private method with implementation of Warnsdorff's rule.
 
         :param row: int, row of the chessboard
@@ -84,9 +98,19 @@ class KnightsTour:
         possible_knight_moves.sort(key=lambda t: t[2])
 
         for new_row, new_col, _ in possible_knight_moves:
-            self.board[new_row][new_col] = move_count
+            self.chessboard[new_row][new_col] = move_count
             if self._depth_first_search(new_row, new_col, move_count + 1):
                 return True
-            self.board[new_row][new_col] = -1
+            self.chessboard[new_row][new_col] = -1
 
         return False
+
+    def _print_path(self) -> None:
+        """Private method that prints path of the knight
+
+        :rtype None:
+        """
+        for i in range(self.chessboard_size):
+            for j in range(self.chessboard_size):
+                print(f"{self.chessboard[i][j]:2d} ", end='')
+            print()
