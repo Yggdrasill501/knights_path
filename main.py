@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """Main file, runs whole code."""
-from breath_first_search.user_interface import user_interface
-from depth_seatch.console_ui import ConsoleUi
-
 import logging
+import breath_first_search.console
+import depth_first_search.console
 
 logging.basicConfig(level=logging.ERROR)
 MODULE_LOGGER = logging.getLogger(__name__)
@@ -21,13 +20,11 @@ if __name__ == "__main__":
                                "If you want solve every visit of knight enter D or d. "))
 
             if option == 'B' or option == 'b':
-                user_interface()
-
+                breath_first_search.console.user_interface()
                 console_runner = False
 
             elif option == 'D' or option == 'd':
-                ConsoleUi.user_interface()
-
+                depth_first_search.console.user_interface()
                 console_runner = False
 
             else:

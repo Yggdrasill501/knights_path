@@ -17,6 +17,4 @@ def user_interface():
 
     shortest_path = ShortestPathKnight(x)
 
-
-
     print(f"Minimal number of steps to reach end position is {shortest_path.breath_first_search()}")
