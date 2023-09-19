@@ -66,8 +66,8 @@ class KnightsTour:
         :param row: int, row of the chessboard
         :param colum: int, colum of the chessboard
         :param move_count: int, count of moves of knight on the chessboard
-        :returns True: if bla bla
-        :returns Flase: if bla bla
+        :returns True: if knight moves are possible on the chessboard
+        :returns False: if knight moves are not possible on the chessboard
         :rtype bool:
         """
         if move_count == self.chessboard_size * self.chessboard_size:
@@ -82,3 +82,11 @@ class KnightsTour:
                 possible_knight_moves.append((new_row, new_colum, self._warnsdorffs_count(new_row, new_colum)))
 
         possible_knight_moves.sort(key=lambda t: t[2])
+
+        for new_row, new_col, _ in possible_knight_moves:
+            self.board[new_row][new_col] = move_count
+            if self._depth_first_search(new_row, new_col, move_count + 1):
+                return True
+            self.board[new_row][new_col] = -1
+
+        return False
