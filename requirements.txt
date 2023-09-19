@@ -2,3 +2,4 @@ numpy
 matplotlib
 chess
 jupyer
+chess-board
