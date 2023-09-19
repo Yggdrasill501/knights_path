@@ -21,7 +21,9 @@ class KnightsTour:
         self.moves_row = [2, 1, -1, -2, -2, -1, 1, 2]
         self.moves_colum = [1, 2, 2, 1, -1, -2, -2, -1]
 
-    def _is_valid_move(self, row: int, colum: int):
+    def _is_valid_move(self,
+                       row: int,
+                       colum: int) -> bool:
         """Private method that says if the move is valid.
 
         :param row: int, row of the chessboard
@@ -37,7 +39,9 @@ class KnightsTour:
             MODULE_LOGGER.info("No valid move")
             return False
 
-    def warnsdorffs_count(self, row, colum):
+    def warnsdorffs_count(self,
+                          row: int,
+                          colum: int) -> int:
         """Method with implementation of Warnsdorff's rule.
 
         :param row: int, row of the chessboard
@@ -45,7 +49,7 @@ class KnightsTour:
         :return count: int, count of valid moves
         :rtype int:
         """
-        count = 0
+        count: int = 0
         for i in range(self.chessboard_size):
             new_row, new_colum = row + self.moves_row[i], colum + self.moves_colum[i]
             if self._is_valid_move(new_row, new_colum):
