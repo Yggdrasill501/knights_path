@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Exceptions for knights_path."""
+"""Exceptions for breath_first_search."""
 
 
 class InvalidChessboard(Exception):
