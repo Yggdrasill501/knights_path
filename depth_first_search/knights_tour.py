@@ -30,8 +30,8 @@ class KnightsTour:
         :param start_row: int
         :param start_column:
         """
-        print(self.chessboard)
         self.chessboard[start_row][start_column] = 0
+
         if not self._depth_first_search(start_row, start_column, 1):
             MODULE_LOGGER.info("Solution does not exist")
         else:
