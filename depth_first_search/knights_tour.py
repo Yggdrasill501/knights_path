@@ -20,6 +20,7 @@ class KnightsTour:
         self.chessboard = [[-1 for _ in range(board_size)] for _ in range(board_size)]
         self.moves_row = [2, 1, -1, -2, -2, -1, 1, 2]
         self.moves_colum = [1, 2, 2, 1, -1, -2, -2, -1]
+        self.count_of_possible_moves = len(self.moves_row)
 
     def find_path(self,
                   start_row: int = 0,
@@ -66,7 +67,7 @@ class KnightsTour:
         :rtype int:
         """
         count: int = 0
-        for i in range(self.chessboard_size):
+        for i in range(self.count_of_possible_moves):
             new_row, new_colum = row + self.moves_row[i], colum + self.moves_colum[i]
             if self._is_valid_move(new_row, new_colum):
                 count += 1
@@ -91,7 +92,7 @@ class KnightsTour:
 
         possible_knight_moves: list = []
 
-        for i in range(self.chessboard_size):
+        for i in range(self.count_of_possible_moves):
             new_row, new_colum = row + self.moves_row[i], colum + self.moves_colum[i]
 
             if self._is_valid_move(new_row, new_colum):
