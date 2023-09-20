@@ -7,8 +7,12 @@ import depth_first_search.console
 logging.basicConfig(level=logging.INFO)
 MODULE_LOGGER = logging.getLogger(__name__)
 
+def main() -> None:
+    """Main function.
+    Combines interface with functionality
 
-if __name__ == "__main__":
+    :rtype None:
+    """
     print("Hello user, you started Knights Path program")
     print("Please enter what kind of Knights Path problem you want to solve")
 
@@ -33,3 +37,7 @@ if __name__ == "__main__":
         except ValueError as e:
             MODULE_LOGGER.error(f"You entered wrong value, program raised {e}")
             print("Please enter correct option")
+
+
+if __name__ == "__main__":
+    main()
