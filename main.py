@@ -4,7 +4,7 @@ import logging
 import breath_first_search.console
 import depth_first_search.console
 
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.INFO)
 MODULE_LOGGER = logging.getLogger(__name__)
 
 
@@ -16,8 +16,8 @@ if __name__ == "__main__":
 
     while console_runner:
         try:
-            option = str(input("If you want to solve shortest path enter B or b, \n"
-                               "If you want solve every visit of knight enter D or d. "))
+            option = str(input("If you want to solve shortest path(breadth first search) enter B or b, \n"
+                               "If you want solve every visit of knight(depth first search) enter D or d. "))
 
             if option == 'B' or option == 'b':
                 breath_first_search.console.user_interface()

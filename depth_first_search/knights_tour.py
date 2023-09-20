@@ -33,6 +33,7 @@ class KnightsTour:
         if not self._depth_first_search(start_row, start_colum, 1):
             MODULE_LOGGER.info("Solution does not exist")
         else:
+            MODULE_LOGGER.info("finding path*")
             self._print_path()
 
     def _is_valid_move(self,
