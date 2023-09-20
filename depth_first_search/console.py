@@ -14,8 +14,7 @@ def user_interface():
     try:
         board_size = int(input("Enter the board size: "))
         search = KnightsTour(board_size)
-
-        print(f"Path of knight is {search.find_path()}")
+        search.find_path()
 
     except ValueError as e:
         MODULE_LOGGER.error(f"You entered wrong value into board size, program raised {e}")
