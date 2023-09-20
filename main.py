@@ -7,6 +7,7 @@ import depth_first_search.console
 logging.basicConfig(level=logging.INFO)
 MODULE_LOGGER = logging.getLogger(__name__)
 
+
 def main() -> None:
     """Main function.
     Combines interface with functionality
