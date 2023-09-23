@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Algorythm for shortest path of knight."""
-import logging
-
-logging.basicConfig(level=logging.INFO)
-MODULE_LOGGER = logging.getLogger(__name__)
-
 
 class KnightsTour:
     """Class for depth search of playground."""
@@ -117,3 +110,4 @@ class KnightsTour:
             for j in range(self.chessboard_size):
                 print(f"{self.chessboard[i][j]:2d} ", end='')
             print()
+
