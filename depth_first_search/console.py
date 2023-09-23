@@ -22,8 +22,7 @@ def user_interface():
             search.find_path()
 
         elif option == 'Q' or option == 'q':
-            search = depth_first_search.devide_and_conquer.KnightsTour(board_size)
-            search.find_path()
+            search = depth_first_search.divide_and_conquer.KnightsTour(board_size)
 
     except ValueError as e:
         MODULE_LOGGER.error(f"You entered wrong value into chessboard size, program raised {e}")
